@@ -21,20 +21,20 @@ services:
     container_name: mongo
     network_mode: host
 
-#  neo4j:
-#    image: neo4j
-#    ports:
-#      - 7474:7474
-#      - 7687:7687
-#    expose:
-#      - 7474
-#      - 7687
-#    container_name: neo4j
-#    network_mode: host
-#    volumes:
-#      - './data/neo4j:/var/lib/neo4j/data'
-#    environment:
-#      - NEO4J_AUTH=neo4j/quizify
+  neo4j:
+    image: neo4j
+    ports:
+      - 7474:7474
+      - 7687:7687
+    expose:
+      - 7474
+      - 7687
+    container_name: neo4j
+    network_mode: host
+    volumes:
+      - './data/neo4j:/var/lib/neo4j/data'
+    environment:
+      - NEO4J_AUTH=neo4j/quizify
 
   zookeeper:
     container_name: zookeeper
@@ -62,9 +62,9 @@ services:
       - zookeeper
     network_mode: host
     environment:
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_ADVERTISED_HOST_NAME: kafka
-      KAFKA_ZOOKEEPER_CONNECT: 0.0.0.0:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092
+      KAFKA_ADVERTISED_HOST_NAME: 127.0.0.1
+      KAFKA_ZOOKEEPER_CONNECT: 127.0.0.1:2181
       KAFKA_MESSAGE_MAX_BYTES: 1000000000
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
@@ -182,23 +182,6 @@ services:
       - 8095:8095
     expose:
       - 8095
-#
-#  recommendation-service:
-#    image: recommendation-service
-#    build: recommendation-service/
-#    restart: always
-#    network_mode: host
-#    depends_on:
-#      - kafka
-#      - neo4j
-#      - eurekaserver
-#      - configserver
-#      - apigateway
-#    ports:
-#      - 8104:8104
-#    expose:
-#      - 8104
-#
 
   single-player-engine:
     image: single-player-engine
@@ -214,6 +197,23 @@ services:
       - 8108:8108
     expose:
       - 8108
+
+  recommendation-service:
+    image: recommendation-service
+    build: recommendation-service/
+    restart: always
+    network_mode: host
+    depends_on:
+      - kafka
+      - neo4j
+      - eurekaserver
+      - configserver
+      - apigateway
+    ports:
+      - 8104:8104
+    expose:
+      - 8104
+
 
 #
 #  quizify-front-end:

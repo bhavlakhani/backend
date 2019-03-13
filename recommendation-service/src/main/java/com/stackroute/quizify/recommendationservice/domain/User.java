@@ -1,6 +1,7 @@
 package com.stackroute.quizify.recommendationservice.domain;
 
 
+import com.stackroute.quizify.dto.model.GameDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +14,12 @@ import java.util.List;
 
 
 @NodeEntity
-//@Data
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private long id;
     @Property
     private String name;
@@ -25,48 +27,9 @@ public class User {
     private List<Genre> genres;
     @Property
     private String gender;
-
-    public long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public List<Topic> getTopics() {
-        return topics;
-    }
-
-    public List<Genre> getGenres() {
-        return genres;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setTopics(List<Topic> topics) {
-        this.topics = topics;
-    }
-
-    public void setGenres(List<Genre> genres) {
-        this.genres = genres;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
+//    @Property
+//    private List<Game> playedGames;
 }
-
 
 //    CREATE (Peter:User{userName: 'Peter N', gender: 'male'}) CREATE (Sam:User {userName: 'Sam Sheldon', gender: 'male'}) CREATE (Ryan:User {userName: 'Ryan A', gender: 'male'})
 

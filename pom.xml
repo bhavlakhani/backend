@@ -34,8 +34,9 @@
         <module>search-service</module>
         <module>user-registration-service</module>
         <module>user-authentication-service</module>
-        <!--<module>recommendation-service</module>-->
         <module>single-player-engine</module>
+        <module>recommendation-service</module>
+
     </modules>
     <dependencies>
         <dependency>

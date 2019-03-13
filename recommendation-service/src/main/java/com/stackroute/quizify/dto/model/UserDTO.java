@@ -15,4 +15,6 @@ public class UserDTO {
     private List<TopicDTO> topics;
     private List<GenreDTO> genres;
     private String gender;
+    private List<GameDTO> playedGames;
 }
+

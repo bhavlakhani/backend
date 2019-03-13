@@ -5,20 +5,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 public class Producer {
-
-    @Value("${kafka.topic}")
     private String topic;
 
     private KafkaTemplate<String, SinglePlayer> kafkaTemplate;
 
     @Autowired
-    public Producer(KafkaTemplate<String, SinglePlayer> kafkaTemplate) {
+    public Producer(Environment env, KafkaTemplate<String, SinglePlayer> kafkaTemplate) {
+        this.topic = env.getProperty("kafka.topic");
         this.kafkaTemplate = kafkaTemplate;
     }
 

@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class SinglePlayer {
-    private long gameId;
-    private long userId;
+    private Game game;
+    private String playerName;
 }
