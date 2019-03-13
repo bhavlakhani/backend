@@ -62,8 +62,8 @@ services:
       - zookeeper
     network_mode: host
     environment:
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://0.0.0.0:9092
-      KAFKA_ADVERTISED_HOST_NAME: 0.0.0.0
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_ADVERTISED_HOST_NAME: kafka
       KAFKA_ZOOKEEPER_CONNECT: 0.0.0.0:2181
       KAFKA_MESSAGE_MAX_BYTES: 1000000000
     volumes:
